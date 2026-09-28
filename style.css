@@ -1,0 +1,157 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-width: 320px;
+    background: #171411;
+    color: #fff8ed;
+    font-family: "Trebuchet MS", Arial, sans-serif;
+}
+
+nav {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    min-height: 100px;
+    padding: 12px clamp(20px, 7vw, 100px);
+    border-bottom: 1px solid rgb(255 248 237 / 12%);
+    background: #171411;
+}
+
+nav img {
+    display: block;
+    width: 88px;
+    height: 76px;
+    object-fit: contain;
+}
+
+nav div {
+    display: flex;
+    align-items: center;
+    gap: clamp(18px, 4vw, 52px);
+}
+
+nav a {
+    color: #fff8ed;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: color 180ms ease;
+}
+
+nav a:hover,
+nav a:focus-visible {
+    color: #f08a27;
+}
+
+#hero {
+    position: relative;
+    display: grid;
+    min-height: min(720px, calc(100svh - 100px));
+    place-items: center;
+    overflow: hidden;
+    padding: 80px 24px;
+    text-align: center;
+    background:
+        radial-gradient(ellipse at 50% 110%, rgb(240 138 39 / 17%), transparent 55%),
+        #171411;
+}
+
+#hero::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: min(76vw, 680px);
+    aspect-ratio: 1;
+    border: 1px solid rgb(240 138 39 / 18%);
+    border-radius: 50%;
+    content: "";
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+
+#hero > div {
+    position: relative;
+    width: min(100%, 900px);
+    animation: welcome-in 700ms ease-out both;
+}
+
+#hero h1 {
+    max-width: 900px;
+    margin: 0 auto 24px;
+    color: #fff8ed;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(2.5rem, 7vw, 5.6rem);
+    font-weight: 700;
+    line-height: 1.08;
+}
+
+#hero h2 {
+    margin: 0;
+    color: #f08a27;
+    font-size: clamp(1rem, 2.3vw, 1.45rem);
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+@keyframes welcome-in {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 560px) {
+    nav {
+        min-height: 82px;
+        gap: 14px;
+        padding: 10px 16px;
+    }
+
+    nav img {
+        width: 66px;
+        height: 60px;
+    }
+
+    nav div {
+        gap: 14px;
+    }
+
+    nav a {
+        font-size: 0.78rem;
+    }
+
+    #hero {
+        min-height: calc(100svh - 82px);
+        padding: 64px 20px;
+    }
+
+    #hero::before {
+        width: 105vw;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    #hero > div {
+        animation: none;
+    }
+}
